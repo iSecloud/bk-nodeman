@@ -1,15 +1,15 @@
 {
-    "system_id": "bk_nodeman",
+    "system_id": "bk-nodeman-test",
     "operations": [
         {
             "operation": "upsert_system",
             "data": {
-                "id": "bk_nodeman",
+                "id": "bk-nodeman-test",
                 "name": "节点管理",
                 "name_en": "nodeman",
                 "description": "",
                 "description_en": "",
-                "clients": "bk_nodeman,bk_bknodeman",
+                "clients": "bk-nodeman-test,bk_bknodeman",
                 "provider_config": {"host": "http://__BK_NODEMAN_API_ADDR__", "auth": "basic"}
             }
         },
@@ -63,7 +63,7 @@
                 "name_en": "Cloud",
                 "resource_type_chain": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "cloud"
                     }
                 ]
@@ -75,7 +75,7 @@
               "id": "ap_instance_selection",
               "name": "接入点",
               "name_en": "Access Point",
-              "resource_type_chain": [{"system_id": "bk_nodeman", "id": "ap"}]
+              "resource_type_chain": [{"system_id": "bk-nodeman-test", "id": "ap"}]
           }
         },
         {
@@ -90,14 +90,14 @@
                 "version": 1,
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "cloud",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "cloud_instance_selection"
                             }
                         ]
@@ -120,14 +120,14 @@
                 ],
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "cloud",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "cloud_instance_selection"
                             }
                         ]
@@ -150,14 +150,14 @@
                 ],
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "cloud",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "cloud_instance_selection"
                             }
                         ]
@@ -189,14 +189,14 @@
                 "version": 1,
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "ap",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "ap_instance_selection"
                             }
                         ]
@@ -219,14 +219,14 @@
                 ],
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "ap",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "ap_instance_selection"
                             }
                         ]
@@ -249,14 +249,14 @@
                 ],
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "ap",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "ap_instance_selection"
                             }
                         ]

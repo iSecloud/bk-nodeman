@@ -1,5 +1,5 @@
 {
-    "system_id": "bk_nodeman",
+    "system_id": "bk-nodeman-test",
     "operations": [
         {
             "operation": "upsert_resource_type",
@@ -37,7 +37,7 @@
                 "name_en": "Package",
                 "resource_type_chain": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "package"
                     }
                 ]
@@ -51,7 +51,7 @@
                 "name_en": "Strategy",
                 "resource_type_chain": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "strategy"
                     }
                 ]
@@ -81,14 +81,14 @@
                 "version": 1,
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "package",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "package_instance_selection"
                             }
                         ]
@@ -161,14 +161,14 @@
                 ],
                 "related_resource_types": [
                     {
-                        "system_id": "bk_nodeman",
+                        "system_id": "bk-nodeman-test",
                         "id": "strategy",
                         "name_alias": "",
                         "name_alias_en": "",
                         "selection_mode": "instance",
                         "related_instance_selections": [
                             {
-                                "system_id": "bk_nodeman",
+                                "system_id": "bk-nodeman-test",
                                 "id": "strategy_instance_selection"
                             }
                         ]

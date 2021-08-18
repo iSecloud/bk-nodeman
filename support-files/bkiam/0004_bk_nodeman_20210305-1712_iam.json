@@ -1,5 +1,5 @@
 {
-    "system_id": "bk_nodeman",
+    "system_id": "bk-nodeman-test",
     "operations": [
         {
             "operation": "add_common_actions",

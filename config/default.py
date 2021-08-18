@@ -168,10 +168,10 @@ BK_CMDB_HOST = os.environ.get("BK_CMDB_HOST", BK_PAAS_HOST.replace("paas", "cmdb
 BK_JOB_HOST = os.environ.get("BK_JOB_HOST", BK_PAAS_HOST.replace("paas", "job"))
 
 BK_IAM_ESB_PAAS_HOST = os.getenv("BK_IAM_ESB_PAAS_HOST") or BK_PAAS_INNER_HOST
-BK_IAM_HOST = os.getenv("BK_IAM_V3_INNER_HOST", "http://bkiam.service.consul:9081")
-BK_IAM_SYSTEM_ID = os.getenv("BK_IAM_SYSTEM_ID", "bk_nodeman")
+BK_IAM_HOST = os.getenv("BKAPP_IAM_V3_INNER_HOST", "http://bkiam.service.consul:9081")
+BK_IAM_SYSTEM_ID = os.getenv("BKAPP_IAM_SYSTEM_ID", "bk_nodeman")
 BK_IAM_CMDB_SYSTEM_ID = os.getenv("BK_IAM_CMDB_SYSTEM_ID", "bk_cmdb")
-BK_IAM_URL = os.getenv("BK_IAM_URL", f"{BK_PAAS_HOST}/o/bk_iam/apply-custom-perm")
+BK_IAM_URL = os.getenv("BKAPP_IAM_V3_SAAS_HOST", f"{BK_PAAS_HOST}/o/bk_iam/apply-custom-perm")
 
 BK_IAM_MIGRATION_APP_NAME = "iam_migrations"
 BK_IAM_SKIP = False
@@ -336,7 +336,7 @@ if IS_USE_CELERY:
     CELERY_TASK_RESULT_EXPIRES = 60 * 30  # 30分钟丢弃结果
 
 # 后台配置
-BK_BACKEND_CONFIG = bool(os.getenv("BK_BACKEND_CONFIG", None))
+BK_BACKEND_CONFIG = bool(os.getenv("BACKEND_CONFIG", None))
 
 if BK_BACKEND_CONFIG:
     IS_LOCAL = False
@@ -363,11 +363,11 @@ if BK_BACKEND_CONFIG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",  # 默认用mysql
-            "NAME": os.getenv("BK_NODEMAN_MYSQL_NAME", "bk_nodeman"),  # 数据库名
-            "USER": os.getenv("BK_NODEMAN_MYSQL_USER"),
-            "PASSWORD": os.getenv("BK_NODEMAN_MYSQL_PASSWORD"),
-            "HOST": os.getenv("BK_NODEMAN_MYSQL_HOST"),
-            "PORT": os.getenv("BK_NODEMAN_MYSQL_PORT"),
+            "NAME": os.getenv("MYSQL_NAME", "bk_nodeman"),  # 数据库名
+            "USER": os.getenv("MYSQL_USER"),
+            "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+            "HOST": os.getenv("MYSQL_HOST"),
+            "PORT": os.getenv("MYSQL_PORT"),
             "OPTIONS": {"isolation_level": "repeatable read"},
         }
     }
@@ -377,10 +377,10 @@ if BK_BACKEND_CONFIG:
         "apps.utils.drf.CsrfExemptSessionAuthentication",
     ]
     # redis 集群sentinel模式
-    REDIS_HOST = os.getenv("BK_NODEMAN_REDIS_SENTINEL_HOST")
-    REDIS_PORT = os.getenv("BK_NODEMAN_REDIS_SENTINEL_PORT")
-    REDIS_PASSWD = os.getenv("BK_NODEMAN_REDIS_PASSWORD")
-    REDIS_MASTER_NAME = os.getenv("BK_NODEMAN_REDIS_MASTER_NAME")
+    REDIS_HOST = os.getenv("REDIS_HOST")
+    REDIS_PORT = os.getenv("REDIS_PORT")
+    REDIS_PASSWD = os.getenv("REDIS_PASSWORD")
+    REDIS_MASTER_NAME = os.getenv("REDIS_MASTER_NAME")
 
     REDIS = {
         "host": REDIS_HOST,
@@ -391,15 +391,16 @@ if BK_BACKEND_CONFIG:
     }
     # BROKER_URL
     BROKER_URL = "amqp://{user}:{passwd}@{host}:{port}/{vhost}".format(
-        user=os.getenv("BK_NODEMAN_RABBITMQ_USERNAME"),
-        passwd=os.getenv("BK_NODEMAN_RABBITMQ_PASSWORD"),
-        host=os.getenv("BK_NODEMAN_RABBITMQ_HOST"),
-        port=os.getenv("BK_NODEMAN_RABBITMQ_PORT"),
-        vhost=os.getenv("BK_NODEMAN_RABBITMQ_VHOST") or "bk_bknodeman",
+        user=os.getenv("RABBITMQ_USER"),
+        passwd=os.getenv("RABBITMQ_PASSWORD"),
+        host=os.getenv("RABBITMQ_HOST"),
+        port=os.getenv("RABBITMQ_PORT"),
+        vhost=os.getenv("RABBITMQ_VHOST") or "bk_bknodeman",
     )
 
+    REDIS["mode"] = os.getenv("REDIS_MODE", "single")
     # celery redbeat config
-    if BKAPP_RUN_ENV == "ce":
+    if REDIS["mode"] == "single":
         REDBEAT_REDIS_URL = "redis://:{passwd}@{host}:{port}/0".format(
             passwd=REDIS_PASSWD, host=REDIS_HOST, port=REDIS_PORT or 6379
         )

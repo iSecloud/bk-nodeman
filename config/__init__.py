@@ -37,7 +37,9 @@ else:
     ENVIRONMENT = {"development": "dev", "testing": "stag", "production": "prod"}.get(PAAS_V2_ENVIRONMENT)
 
 # SaaS运行版本，如非必要请勿修改
-RUN_VER = os.environ.get("BKPAAS_ENGINE_REGION", "open")
+# 暂时避开开发框架的问题，新版PaaS该值设置为default
+# 在开发框架中根据该值导入config，config仅提供open可选
+RUN_VER = os.environ.get("ENGINE_REGION", "open")
 
 APP_ID = APP_CODE = os.environ.get("APP_ID", "bk_nodeman")
 APP_TOKEN = SECRET_KEY = os.environ.get("APP_TOKEN", "")
