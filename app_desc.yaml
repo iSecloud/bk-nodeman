@@ -2,8 +2,8 @@ spec_version: 2
 app_version: "{{APP_VERSION}}"
 app:
     region: default
-    bk_app_code: "bk-nodeman-k8s"
-    bk_app_name: 节点管理容器部署版
+    bk_app_code: "bk-nodeman-k8s-test"
+    bk_app_name: 节点管理容器部署版测试
     market:
         category: 运维工具
         introduction: 通过节点管理，可以对蓝鲸体系中的gse agent进行管理，包括状态查询、版本更新、配置管理、健康检查、进程管理等。
