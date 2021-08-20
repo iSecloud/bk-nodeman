@@ -2,7 +2,7 @@ spec_version: 2
 app_version: "{{APP_VERSION}}"
 app:
     region: default
-    bk_app_code: "bk-nodeman-k8s-test"
+    bk_app_code: "bk-nodeman-test"
     bk_app_name: 节点管理容器部署版测试
     market:
         category: 运维工具
