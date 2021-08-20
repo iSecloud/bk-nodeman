@@ -32,6 +32,8 @@ modules:
         services:
             - name: rabbitmq
             - name: redis
+            - name: mysql
+              shared_from: default
         env_variables:
             - key: BK_BACKEND_CONFIG
               value: True
