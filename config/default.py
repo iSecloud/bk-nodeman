@@ -340,7 +340,7 @@ if IS_USE_CELERY:
     CELERY_TASK_RESULT_EXPIRES = 60 * 30  # 30分钟丢弃结果
 
 # 后台配置
-BK_BACKEND_CONFIG = bool(os.getenv("BK_BACKEND_CONFIG", None))
+BK_BACKEND_CONFIG = bool(os.getenv("BACKEND_CONFIG", None))
 
 if BK_BACKEND_CONFIG:
     IS_LOCAL = False
