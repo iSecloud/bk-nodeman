@@ -189,6 +189,10 @@ SHOW_EXCEPTION_DETAIL = False
 # 使用权限中心
 USE_IAM = bool(os.getenv("BKAPP_USE_IAM", False))
 
+if not USE_IAM:
+    iam_idx = INSTALLED_APPS.index("apps.iam_migration")
+    INSTALLED_APPS = INSTALLED_APPS[:iam_idx] + INSTALLED_APPS[iam_idx + 1 :]
+
 # 并发数
 CONCURRENT_NUMBER = int(os.getenv("CONCURRENT_NUMBER", 50) or 50)
 
