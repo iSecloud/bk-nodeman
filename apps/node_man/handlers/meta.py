@@ -145,7 +145,7 @@ class MetaHandler(APIModel):
             for index, item in enumerate(sublist):
                 col_map[index].add(item)
 
-        os_types_children = [{"name": constants.OS_CHN.get(os, os), "id": os} for os in os_types if os != ""]
+        os_types_children = self.fetch_os_type(os_types)
         statuses_children = [
             {"name": constants.PROC_STATUS_CHN.get(status, status), "id": status} for status in statuses if status != ""
         ]
@@ -437,6 +437,17 @@ class MetaHandler(APIModel):
 
         return plugin_result
 
+    @staticmethod
+    def fetch_os_type(os_types=constants.OsType):
+        os_types_children = []
+        for os_type in os_types:
+            if os_type == "":
+                continue
+            os_types_children.append(
+                {"id": os_type, "name": os_type if os_type == constants.OsType.AIX else os_type.capitalize()}
+            )
+        return os_types_children
+
     def filter_condition(self, category):
         """
         获取过滤条件
@@ -459,6 +470,9 @@ class MetaHandler(APIModel):
             return ret
         elif category == "plugin_host":
             ret = self.fetch_plugin_host_condition()
+            return ret
+        elif category == "os_type":
+            ret = self.fetch_os_type()
             return ret
 
     def search(self, key):
